@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
@@ -23,26 +24,42 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
+     * * @Assert\Length(
+     *      min = 3
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 3
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     *@Assert\Range(
+     *      min = 25,
+     *      max = 400
+     * )
      */
     private $surface;
 
     /**
      * @ORM\Column(type="integer")
+     *@Assert\Range(
+     *      min = 1
+     * )
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1
+     * )
      */
     private $bedrooms;
 
@@ -53,6 +70,9 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1
+     * )
      */
     private $price;
 
