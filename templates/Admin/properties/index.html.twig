@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block  title %} les biens {% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1>Tous les Biens</h1>
+
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <td>title</td>
+                    <td>Option</td>
+                </tr>
+            </thead>
+            {% for property in properties %}
+                 <tbody>
+                    <tr>
+                        <td> {{property.title}} </td>
+                        <td><a class="btn btn-secondary" href={{path('admin_property_edit', {id: property.id})}}>Editer</a>
+                        
+                            <a class="btn btn-danger" href={{path('admin_property_delete', {id: property.id})}} onsubmit="return confirm('etes vous sur')">Supprimer</a>
+
+                        
+                        </td>
+                                         
+                    </tr>
+                </tbody>
+            {% endfor %}
+           
+        </table>
+
+         <a class="btn btn-primary" href={{path('admin_property_new')}}>Crer un nouveau bien</a>
+
+    </div>
+{% endblock %}

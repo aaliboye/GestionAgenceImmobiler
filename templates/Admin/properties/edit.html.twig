@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block  title %} Modifier bien {% endblock %}
+
+
+{% block body %}
+    <div class="container mt-3 mb-3">
+        <h1>Editer tous les biens</h1>
+
+        {{ form_start(formu) }}
+            {{ form_rest (formu) }}
+
+            <button class="btn btn-primary">Editer</button>
+        {{ form_end(formu) }}
+{% endblock %}

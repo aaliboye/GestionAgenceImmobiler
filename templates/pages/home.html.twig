@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block  title %} Home {% endblock %}
+
+{% block body %}
+
+
+<div class="alert alert-info text-center"> 
+    <h1> Agence Imobiler </h1>
+    <p> bienvenu! bienvenu! bienvenu! bienvenu! bienvenu! bienvenu! bienvenu!
+     </P>
+</div>
+
+<div class="container">
+    <div class="row">
+    <p>Les derniers biens</p>
+    {% for property in properties %}
+        
+    
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href={{ path('property_show', {id: property.id, title: property.title}) }}> {{ property.title }} </a>
+                    </h5>
+                    <p class="card-text"> {{ property.description }} </p>
+                    <div class="text-primary"> {{property.formatedPrice}} $</div>
+                    
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
