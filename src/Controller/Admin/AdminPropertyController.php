@@ -49,6 +49,7 @@ class AdminPropertyController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($property);
             $em->flush();
+            $this->addFlash('succes', 'bien crée avec succés');
 
             return $this->redirectToRoute('admin_property_index');
          }
@@ -72,6 +73,7 @@ class AdminPropertyController extends AbstractController
          if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash('success', 'bien modifié avec succes');
 
             return $this->redirectToRoute('admin_property_index');
          }
@@ -82,7 +84,7 @@ class AdminPropertyController extends AbstractController
      }
 
      /**
-     * @Route("/admin/property/{id}/delete", name="admin_property_delete")
+     * @Route("/admin/property/{id}/delete ", name="admin_property_delete")
      * @param Property $property
      */
 
@@ -92,6 +94,7 @@ class AdminPropertyController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($property);
             $em->flush();
+            $this->addFlash('success', 'bien supprimé avec succes');
 
         return $this->redirectToRoute('admin_property_index');
 
