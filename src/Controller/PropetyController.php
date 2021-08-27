@@ -31,8 +31,11 @@ class PropetyController extends AbstractController
 
     public function index(): Response
     {
+        $properties = new Property();
+        $properties= $this->repository->findAll();
         return $this->render('propeties/index.html.twig', [
-            'currant_menu' => 'propeties'
+            'currant_menu' => 'propeties',
+            'properties' => $properties
         ]);
     }
 
